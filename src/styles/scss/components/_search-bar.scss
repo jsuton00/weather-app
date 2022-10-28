@@ -1,0 +1,51 @@
+.search {
+	&-form {
+		position: relative;
+		display: flex;
+		justify-content: flex-end;
+		align-items: center;
+		width: 32%;
+		margin-left: auto;
+
+		@media (max-width: 768px) {
+			flex-grow: 1;
+			margin-left: $spacing-base;
+		}
+	}
+	&-input {
+		border: $spacing-primary solid $whitesmoke;
+		width: 100%;
+		background-image: $linearBlurCardBg;
+		padding: $spacing-xxs $spacing-xxl;
+
+		&::-webkit-input-placeholder {
+			font-weight: $roboto-medium;
+		}
+
+		&::-moz-placeholder {
+			font-weight: $roboto-medium;
+		}
+
+		&:-ms-input-placeholder {
+			font-weight: $roboto-medium;
+		}
+
+		&::-ms-input-placeholder {
+			font-weight: $roboto-medium;
+		}
+
+		&::placeholder {
+			font-weight: $roboto-medium;
+		}
+
+		&:focus {
+			outline: none;
+		}
+	}
+	&-icon {
+		position: absolute;
+		top: 0;
+		left: 0;
+		padding: $spacing-xxs $spacing-lg;
+	}
+}

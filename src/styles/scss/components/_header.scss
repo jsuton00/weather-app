@@ -1,0 +1,25 @@
+.header {
+	width: 100%;
+	height: 4rem;
+	background-image: $linearFineGradientBg;
+	padding: $spacing-sm;
+	box-shadow: 0 $spacing-primary $spacing-secondary 0 rgba(0, 0, 0, 0.2);
+
+	&-row {
+		justify-content: space-between;
+		align-items: center;
+		width: 100%;
+		height: 100%;
+		padding: 0 $spacing-xxs;
+		margin: 0 auto;
+	}
+}
+
+.app-brand {
+	width: 32%;
+
+	&-title {
+		padding: 0 $spacing-xxs;
+		color: $whitesmoke;
+	}
+}

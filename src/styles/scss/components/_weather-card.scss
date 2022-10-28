@@ -1,0 +1,69 @@
+.weather {
+	&-card {
+		width: 20rem;
+		border: none;
+
+		&-header,
+		&-footer {
+			background-color: transparent;
+		}
+
+		&-header {
+			border-bottom: none;
+			padding: $spacing-sm $spacing-base;
+		}
+
+		&-icon {
+			display: flex;
+			flex-wrap: wrap;
+			align-items: center;
+			width: 100%;
+			padding: $spacing-sm;
+
+			&-image {
+				width: 4rem;
+				height: 4rem;
+			}
+		}
+
+		&-body {
+			width: 100%;
+			height: 100%;
+			padding: 0 $spacing-base;
+		}
+
+		&-footer {
+			border-top: none;
+			display: flex;
+			flex-wrap: wrap;
+			align-items: center;
+			width: 100%;
+			gap: $spacing-base;
+
+			p {
+				font-size: $font-size-sm;
+			}
+		}
+	}
+	&-timestamp {
+		font-size: $font-size-sm;
+		color: $darkslateGray;
+		font-weight: $roboto-medium;
+	}
+
+	&-temperature {
+		font-size: $font-size-xxl;
+		font-weight: $roboto-medium;
+	}
+
+	&-conditions {
+		display: flex;
+		flex-wrap: wrap;
+		gap: $spacing-xxs;
+		font-weight: $roboto-medium;
+
+		&-description {
+			text-transform: capitalize;
+		}
+	}
+}

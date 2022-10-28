@@ -1,0 +1,18 @@
+.weather {
+	&-grid {
+		display: grid;
+		grid-template-columns: repeat(2, 1fr);
+		grid-template-rows: auto;
+		justify-content: center;
+		align-items: center;
+		background: rgba(255, 255, 255, 0.25);
+		box-shadow: 0 $spacing-sm $spacing-xxl 0 rgba(31, 38, 135, 0.37);
+		backdrop-filter: blur($spacing-xxs);
+		-webkit-backdrop-filter: blur($spacing-xxs);
+		border-radius: 0.625rem;
+		border: $spacing-primary solid rgba(255, 255, 255, 0.18);
+		padding: $spacing-base;
+		width: 100%;
+		margin: 0 auto;
+	}
+}
