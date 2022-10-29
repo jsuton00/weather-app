@@ -240,6 +240,11 @@ a:hover {
   width: 100%;
   margin: 0 auto;
 }
+@media (max-width: 767px) {
+  .weather-grid {
+    grid-template-columns: repeat(1, 1fr);
+  }
+}
 .weather-grid-section {
   width: 100%;
   height: 100%;
