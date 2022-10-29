@@ -1,18 +1,29 @@
 import React, { useState } from 'react';
 import { useEffect } from 'react';
-import { fetchWeatherData, searchLocation } from './apis/api';
+import {
+	fetchDailyWeatherData,
+	fetchHourlyWeatherData,
+	fetchWeatherData,
+	searchLocation,
+} from './apis/api';
 import Header from './components/Header';
-import WeatherCard from './components/WeatherCard';
 import WeatherGrid from './components/WeatherGrid';
 
 const App = () => {
 	const [location, setLocation] = useState('');
-	const [searchTerm, setSearchTerm] = useState('split');
+	const [searchTerm, setSearchTerm] = useState('');
 	const [weatherData, setWeatherData] = useState('');
+	const [hourlyData, setHourlyData] = useState('');
 	const [latitude, setLatitude] = useState(0);
 	const [longitude, setLongitude] = useState(0);
 	const [isLoading, setIsLoading] = useState(false);
 	const [isError, setIsError] = useState(false);
+
+	const getPosition = () => {
+		return new Promise((resolve, reject) => {
+			navigator.geolocation.getCurrentPosition(resolve, reject);
+		});
+	};
 
 	const getLocation = async (searchTerm) => {
 		try {
@@ -44,10 +55,36 @@ const App = () => {
 		}
 	};
 
+	const getHourlyWeatherData = async (lat, lon) => {
+		try {
+			setIsLoading(true);
+			let response;
+
+			if (lat && lon) {
+				response = await fetchHourlyWeatherData(lat, lon);
+			}
+
+			setHourlyData(response.data);
+		} catch (error) {
+			setIsError(true);
+			console.log(error);
+		}
+	};
+
 	useEffect(() => {
 		const timer = setTimeout(() => {
-			if (searchTerm) {
+			if (searchTerm && searchTerm.length > 0) {
 				getLocation(searchTerm);
+			} else {
+				getPosition()
+					.then((position) => {
+						console.log(position);
+						setLatitude(position.coords.latitude);
+						setLongitude(position.coords.longitude);
+					})
+					.catch((error) => {
+						console.log(error.message);
+					});
 			}
 		}, 300);
 
@@ -77,6 +114,7 @@ const App = () => {
 		const timer = setTimeout(() => {
 			if (latitude && longitude) {
 				getWeatherData(latitude, longitude);
+				getHourlyWeatherData(latitude, longitude);
 			}
 		}, 800);
 
@@ -88,12 +126,18 @@ const App = () => {
 	console.log(location);
 	console.log(latitude, longitude);
 	console.log(weatherData);
+	console.log(hourlyData);
 	return (
 		<>
 			<Header searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
 			<main className="main">
 				<div className="main-content container">
-					<WeatherGrid weatherData={weatherData} />
+					<WeatherGrid
+						weatherData={weatherData}
+						latitude={latitude}
+						longitude={longitude}
+						hourlyData={hourlyData}
+					/>
 				</div>
 			</main>
 		</>

@@ -1,21 +1,16 @@
 import React from 'react';
 import WeatherCard from './WeatherCard';
+import WeatherMap from './WeatherMap';
 
 const WeatherGrid = (props) => {
-	const { weatherData } = props;
+	const { weatherData, latitude, longitude, hourlyData } = props;
 	return (
 		<div className="weather-grid">
 			<div className="weather-grid-section weather-card-section">
 				<WeatherCard weatherData={weatherData} />
 			</div>
 			<div className="weather-grid-section weather-map-section">
-				Weather Map
-			</div>
-			<div className="weather-grid-section weather-hourly-section">
-				Hourly Weather forecast
-			</div>
-			<div className="weather-grid-section weather-daily-section">
-				Weather daily forecast
+				<WeatherMap latitude={latitude} longitude={longitude} />
 			</div>
 		</div>
 	);
