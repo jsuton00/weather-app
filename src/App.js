@@ -2,18 +2,18 @@ import React, { useState } from 'react';
 import { useEffect } from 'react';
 import {
 	fetchDailyWeatherData,
-	fetchHourlyWeatherData,
 	fetchWeatherData,
 	searchLocation,
 } from './apis/api';
 import Header from './components/Header';
 import WeatherGrid from './components/WeatherGrid';
+import WeatherMap from './components/WeatherMap';
 
 const App = () => {
 	const [location, setLocation] = useState('');
 	const [searchTerm, setSearchTerm] = useState('');
 	const [weatherData, setWeatherData] = useState('');
-	const [hourlyData, setHourlyData] = useState('');
+	const [dailyWeatherData, setDailyWeatherData] = useState('');
 	const [latitude, setLatitude] = useState(0);
 	const [longitude, setLongitude] = useState(0);
 	const [isLoading, setIsLoading] = useState(false);
@@ -55,16 +55,16 @@ const App = () => {
 		}
 	};
 
-	const getHourlyWeatherData = async (lat, lon) => {
+	const getDailyWeatherData = async (lat, lon) => {
 		try {
 			setIsLoading(true);
 			let response;
 
 			if (lat && lon) {
-				response = await fetchHourlyWeatherData(lat, lon);
+				response = await fetchDailyWeatherData(lat, lon);
 			}
 
-			setHourlyData(response.data);
+			setDailyWeatherData(response.data);
 		} catch (error) {
 			setIsError(true);
 			console.log(error);
@@ -86,7 +86,7 @@ const App = () => {
 						console.log(error.message);
 					});
 			}
-		}, 300);
+		});
 
 		return () => {
 			clearTimeout(timer);
@@ -103,7 +103,7 @@ const App = () => {
 			if (latitude && longitude) {
 				getWeatherData(latitude, longitude);
 			}
-		}, 800);
+		}, 300);
 
 		return () => {
 			clearTimeout(timer);
@@ -114,9 +114,9 @@ const App = () => {
 		const timer = setTimeout(() => {
 			if (latitude && longitude) {
 				getWeatherData(latitude, longitude);
-				getHourlyWeatherData(latitude, longitude);
+				getDailyWeatherData(latitude, longitude);
 			}
-		}, 800);
+		}, 300);
 
 		return () => {
 			clearTimeout(timer);
@@ -124,9 +124,8 @@ const App = () => {
 	}, [latitude, longitude]);
 
 	console.log(location);
-	console.log(latitude, longitude);
 	console.log(weatherData);
-	console.log(hourlyData);
+	console.log(dailyWeatherData);
 	return (
 		<>
 			<Header searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
@@ -134,9 +133,7 @@ const App = () => {
 				<div className="main-content container">
 					<WeatherGrid
 						weatherData={weatherData}
-						latitude={latitude}
-						longitude={longitude}
-						hourlyData={hourlyData}
+						dailyWeatherData={dailyWeatherData}
 					/>
 				</div>
 			</main>

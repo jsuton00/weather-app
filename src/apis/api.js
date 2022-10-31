@@ -14,7 +14,7 @@ export const fetchWeatherData = async (lat, lon) => {
 	);
 };
 
-export const fetchHourlyWeatherData = async (lat, lon) => {
+export const fetchDailyWeatherData = async (lat, lon) => {
 	return await axios.get(
 		`https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&units=metric&appid=${API_KEY}`,
 	);

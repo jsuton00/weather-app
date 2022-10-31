@@ -1,0 +1,62 @@
+.weather-daily {
+	width: 100%;
+	overflow-x: auto;
+	padding: $spacing-sm $spacing-base;
+	margin: 0 auto;
+}
+
+.daily-weather {
+	&-card {
+		width: 10rem;
+		height: 100%;
+		margin-right: $spacing-xxs;
+
+		&-header,
+		&-footer {
+			background-color: transparent;
+			padding: $spacing-sm $spacing-base;
+			text-align: center;
+			p {
+				font-size: $font-size-md;
+				font-weight: $roboto-medium;
+			}
+		}
+
+		&-header {
+			border-bottom: none;
+		}
+
+		&-footer {
+			border-top: none;
+		}
+	}
+
+	&-icon {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		width: 100%;
+		text-align: center;
+
+		&-image {
+			width: 4rem;
+			height: 4rem;
+		}
+	}
+
+	&-temp {
+		text-align: center;
+		font-size: $font-size-lg;
+	}
+
+	&-real-temp {
+		text-align: center;
+		font-size: $font-size-md;
+	}
+
+	&-description {
+		text-align: center;
+		text-transform: capitalize;
+		font-size: $font-size-md;
+	}
+}

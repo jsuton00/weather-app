@@ -71,12 +71,14 @@ a:hover {
 }
 
 .main {
+  position: relative;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   width: 100%;
   height: 100%;
+  transform: translateY(3%);
 }
 .main-content {
   display: flex;
@@ -107,7 +109,7 @@ a:hover {
 }
 .app-brand-title {
   padding: 0 0.25rem;
-  color: #f2f2f2;
+  color: #fff;
 }
 
 .search-form {
@@ -212,16 +214,63 @@ a:hover {
   text-transform: capitalize;
 }
 
+.weather-daily {
+  width: 100%;
+  overflow-x: auto;
+  padding: 0.5rem 1rem;
+  margin: 0 auto;
+}
+
+.daily-weather-card {
+  width: 10rem;
+  height: 100%;
+  margin-right: 0.25rem;
+}
+.daily-weather-card-header, .daily-weather-card-footer {
+  background-color: transparent;
+  padding: 0.5rem 1rem;
+  text-align: center;
+}
+.daily-weather-card-header p, .daily-weather-card-footer p {
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+.daily-weather-card-header {
+  border-bottom: none;
+}
+.daily-weather-card-footer {
+  border-top: none;
+}
+.daily-weather-icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  text-align: center;
+}
+.daily-weather-icon-image {
+  width: 4rem;
+  height: 4rem;
+}
+.daily-weather-temp {
+  text-align: center;
+  font-size: 1.25rem;
+}
+.daily-weather-real-temp {
+  text-align: center;
+  font-size: 0.875rem;
+}
+.daily-weather-description {
+  text-align: center;
+  text-transform: capitalize;
+  font-size: 0.875rem;
+}
+
 .leaflet-container {
   position: relative;
   width: 100%;
-  height: 100%;
+  height: 15rem;
   z-index: 1;
-}
-
-.recharts-wrapper {
-  width: 100%;
-  margin: 0 auto;
 }
 
 .weather-grid {
@@ -242,13 +291,23 @@ a:hover {
 }
 @media (max-width: 767px) {
   .weather-grid {
-    grid-template-columns: repeat(1, 1fr);
+    grid-template-columns: 1fr;
   }
 }
 .weather-grid-section {
   width: 100%;
   height: 100%;
 }
-.weather-hourly-section {
+.weather-card-section {
+  padding: 0 2rem;
+}
+.weather-daily-section {
+  width: 100%;
+  height: 22.5rem;
+  padding: 1rem;
   grid-column: 1/-1;
+}
+.weather-daily-section-heading {
+  padding: 0.25rem 0.5rem;
+  margin-bottom: 0.5rem;
 }

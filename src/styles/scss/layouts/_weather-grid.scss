@@ -16,7 +16,7 @@
 		margin: 0 auto;
 
 		@media (max-width: 767px) {
-			grid-template-columns: repeat(1, 1fr);
+			grid-template-columns: 1fr;
 		}
 
 		&-section {
@@ -25,7 +25,19 @@
 		}
 	}
 
-	&-hourly-section {
+	&-card-section {
+		padding: 0 $spacing-xxl;
+	}
+
+	&-daily-section {
+		width: 100%;
+		height: 22.5rem;
+		padding: $spacing-base;
 		grid-column: 1 / -1;
+
+		&-heading {
+			padding: $spacing-xxs $spacing-sm;
+			margin-bottom: $spacing-sm;
+		}
 	}
 }
