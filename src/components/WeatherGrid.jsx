@@ -10,14 +10,8 @@ const WeatherGrid = (props) => {
 			<div className="weather-grid-section weather-card-section">
 				<WeatherCard weatherData={weatherData} />
 			</div>
-			<div className="weather-grid-section weather-map-section">
-				{latitude && longitude && (
-					<WeatherMap
-						latitude={latitude}
-						longitude={longitude}
-						zoomLevel={15}
-					/>
-				)}
+			<div className="weather-grid-section weather-card-section">
+				<WeatherMap latitude={latitude} longitude={longitude} zoomLevel={12} />
 			</div>
 			<div className="weather-grid-section weather-daily-section">
 				<h5 className="weather-daily-section-heading">Daily Weather</h5>

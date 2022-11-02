@@ -7,7 +7,6 @@ import {
 } from './apis/api';
 import Header from './components/Header';
 import WeatherGrid from './components/WeatherGrid';
-import WeatherMap from './components/WeatherMap';
 
 const App = () => {
 	const [location, setLocation] = useState('');
@@ -134,6 +133,8 @@ const App = () => {
 					<WeatherGrid
 						weatherData={weatherData}
 						dailyWeatherData={dailyWeatherData}
+						latitude={latitude}
+						longitude={longitude}
 					/>
 				</div>
 			</main>
